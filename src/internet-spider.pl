@@ -45,7 +45,7 @@ while (scalar @urls > 0) {
 		print "Failed===============\n";
 	}
 	my $html2 = $response->content;
-	if ($html2 =~ m/([^\s]+@[^\s]{2,8}\.com)/ig) {
+	if ($html2 =~ m/([^\s]+@[^\s]{2,10}\.com)/ig) {
 		push @emails, $1;
 	}
 }

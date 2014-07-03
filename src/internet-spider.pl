@@ -13,9 +13,7 @@ push @urls, $url;
 open my $fh,">link_list.txt";
 open my $fh2,">emails.txt";
 my @emails = ();
-my $browser = LWP::UserAgent->new;
-$browser->agent('Mozilla/4.0 (compatible; MISE 5.12; Mac_PowerPC');
-$browser->timeout(7);
+my $browser = initBrowser();
 
 my $count = 1;
 if ( scalar @urls > 0 ) {
@@ -75,10 +73,24 @@ while (scalar @urls > 0) {
 	}
 }
 
+##################################################
+# This is refactory whole script use subroutine. #
+##################################################
 sub getUrlsByUrl {
 	my $url = shift @_;
 	my $brw = shift @_;
+	my $resp = $brw->get($usr);
+}
 
+sub getUserInput {
+}
+
+sub initBrowser {
+	my $brw = LWP::UserAgent->new;
+	$brw->agent('Mozilla/4.0 (compatible; MISE 5.12; Mac_PowerPC');
+	$brw->timeout(7);
+
+	return $brw;
 }
 print "We scanned: " ,scalar keys %scannedLinks, "\n";
 

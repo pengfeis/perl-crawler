@@ -64,7 +64,7 @@ while (scalar @urls > 0) {
 			}
 			my $html3 = $resp3->content;
 			print ">>>>>Before regex email<<<<<<<<<<<", $lastCount++, "\n";
-			while ($html3 =~ m/([^\s]+@[^\s]{2,20}\.com)/ig) {
+			while ($html3 =~ m/([^\s]+@[^\s]{2,20}\.\w+)/ig) {
 				print $1;
 				print "\n";
 				push @emails, $1;
@@ -80,9 +80,6 @@ sub getUrlsByUrl {
 	my $url = shift @_;
 	my $brw = shift @_;
 	my $resp = $brw->get($usr);
-}
-
-sub getUserInput {
 }
 
 sub initBrowser {
